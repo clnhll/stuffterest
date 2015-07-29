@@ -1,5 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js"></script>
+<script src="http://docs.angularjs.org/angular-sanitize-1.0.0rc10.min.js"></script>
 
 <div class="container">
 
@@ -17,9 +19,9 @@
       <p>Share your profile with this link: <br />
         <a ng-href="http://stuffterest.herokuapp.com/user/{{userId}}">http://stuffterest.herokuapp.com/user/{{userId}}</a></p>
       <h1 class="page-header">My Photos:</h1>
-      <div id="photos">
-      <div class="photo" ng-repeat="thing in awesomeThings | orderBy:'-created'">
-        <img class="img-responsive" ng-src="{{thing.name}}" alt="a photo of a cat" err-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQO5S0X_0I4NxGlzcQDpuxWCrbC3lh_GaEU6YCLiD1vyoNpFM9j8g"/><button type="button" class="close" ng-click="deleteThing(thing)">&times;</button>
+      <div class="grid" masonry="true" id="photos">
+      <div class="photo masonry-brick" ng-repeat="thing in awesomeThings | orderBy:'-created'">
+        <img class="img-responsive" style="width:100%" ng-src="{{thing.name}}" alt="a photo of a cat" err-src="https://s3.amazonaws.com/freecodecamp/landingIcons_learn.svg.gz"/><button type="button" class="close" ng-click="deleteThing(thing)">&times;</button>
       </div>
     </div>
     </div>

@@ -37,67 +37,38 @@
   float: none;
   vertical-align: top;
 }
-#photos .photo {
-    display: inline-block;
-    width: 100% !important;
-}
-.photo img {
-  width: 100%;
-}
-#photos {
-    -moz-column-count: 4;
-    -moz-column-gap: 0px;
-    -webkit-column-count: 4;
-    -webkit-column-gap: 0px;
-    column-count: 4;
-    column-gap: 0px;
-}
-}
-@media only screen
-and (min-width: 1200px)
-and (max-width: 10000000px) {
-  #photos {
-      -moz-column-count: 4;
-      -moz-column-gap: 0px;
-      -webkit-column-count: 4;
-      -webkit-column-gap: 0px;
-      column-count: 4;
-      column-gap: 0px;
-  }
+.photo {
+  width:200px !important;
 }
 
-@media only screen
-and (min-width : 992px)
-and (max-width: 1199px) {
-  #photos {
-      -moz-column-count: 4;
-      -moz-column-gap: 0px;
-      -webkit-column-count: 4;
-      -webkit-column-gap: 0px;
-      column-count: 4;
-      column-gap: 0px;
-  }
+/**** Transitions ****/
+
+.masonry,
+.masonry .photo { /* apply before masonry add class */
+    position: absolute; /* important to add it before enter animation start */
+
+    -webkit-transition-duration: .7s;
+    transition-duration: .7s;
+
+    -webkit-transition-property: all;
+    transition-property: all;
 }
-@media only screen
-and (min-width : 768px)
-and (max-width: 991px) {
-  #photos {
-      -moz-column-count: 3;
-      -moz-column-gap: 0px;
-      -webkit-column-count: 3;
-      -webkit-column-gap: 0px;
-      column-count: 3;
-      column-gap: 0px;
-  }
+
+.masonry .masonry-enter { /* limit animated properties for entering elements */
+    -webkit-transition-property: -webkit-transform, opacity;
+    transition-property: transform, opacity;
 }
-@media only screen
-and (max-width: 767px) {
-  #photos {
-      -moz-column-count: 2;
-      -moz-column-gap: 0px;
-      -webkit-column-count: 2;
-      -webkit-column-gap: 0px;
-      column-count: 2;
-      column-gap: 0px;
-  }
+
+.masonry-enter,
+.masonry-leave.masonry-leave-active {
+    opacity: 0;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+}
+
+.masonry-leave,
+.masonry-enter.masonry-enter-active {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
